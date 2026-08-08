@@ -64,7 +64,7 @@ const CLINIC = {
       id: 'ortodoncia',
       name: 'Ortodoncia y Alineadores',
       description: 'Brackets tradicionales o alineadores transparentes, con plan de pagos mensuales.',
-      priceRange: 'Desde $X,XXX / mes',
+      priceRange: 'Mensualidades según plan',
     },
     {
       id: 'implantes',
@@ -76,7 +76,7 @@ const CLINIC = {
       id: 'endodoncia',
       name: 'Endodoncia',
       description: 'Tratamiento de conducto para salvar el diente en vez de extraerlo, con anestesia controlada.',
-      priceRange: '$X,XXX MXN',
+      priceRange: 'Sujeto a valoración',
     },
     {
       id: 'sonrisa',
