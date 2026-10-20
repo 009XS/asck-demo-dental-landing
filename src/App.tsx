@@ -10,7 +10,6 @@ import { TestimonialsSection } from './components/TestimonialsSection';
 import { StudioLocationSection } from './components/StudioLocationSection';
 import { FaqSection } from './components/FaqSection';
 import { BookingSheetModal } from './components/BookingSheetModal';
-import { ChameleonModal } from './components/ChameleonModal';
 import {
   DentalService,
   InsuranceProvider,
@@ -29,10 +28,8 @@ import { Home, Stethoscope, Users, MapPin } from 'lucide-react';
 export const App: React.FC = () => {
   const [activeClinic, setActiveClinic] = useState<ProspectClinic>(PROSPECT_CLINICS[0]);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
-  const [isChameleonOpen, setIsChameleonOpen] = useState(false);
   const [selectedService, setSelectedService] = useState<DentalService | null>(null);
   const [selectedInsurance, setSelectedInsurance] = useState<InsuranceProvider | null>(null);
-  const [clickCount, setClickCount] = useState(0);
 
   // Read URL query parameters on mount
   useEffect(() => {
@@ -62,34 +59,12 @@ export const App: React.FC = () => {
         });
       }
     }
-
-    // Keyboard shortcut Alt + K for Chameleon modal
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.altKey && (e.key === 'k' || e.key === 'K')) {
-        e.preventDefault();
-        setIsChameleonOpen(true);
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
   // Update document title dynamically
   useEffect(() => {
     document.title = `${activeClinic.nombre} — Odontología Boutique Sin Ansiedad (Inmersion Flow)`;
   }, [activeClinic]);
-
-  const handleSparkleClick = () => {
-    setClickCount((prev) => {
-      const next = prev + 1;
-      if (next >= 3) {
-        setIsChameleonOpen(true);
-        return 0;
-      }
-      return next;
-    });
-  };
 
   const handleOpenBooking = (service?: DentalService) => {
     if (service) setSelectedService(service);
@@ -108,12 +83,8 @@ export const App: React.FC = () => {
         <div className="max-w-5xl mx-auto h-16 px-4 sm:px-6 flex items-center justify-between">
           {/* Logo & Clinic Name */}
           <div className="flex items-center gap-2.5">
-            <div
-              onClick={handleSparkleClick}
-              className="relative cursor-pointer group"
-              title="Tip: Toca 3 veces para abrir selector de clínicas (o presiona Alt + K)"
-            >
-              <div className="w-9 h-9 rounded-full bg-[#f0f9f9] border-2 border-[#1a1c1e] flex items-center justify-center shadow-[1px_1px_0px_#1a1c1e] group-hover:rotate-12 transition-transform">
+            <div className="relative group">
+              <div className="w-9 h-9 rounded-full bg-[#f0f9f9] border-2 border-[#1a1c1e] flex items-center justify-center shadow-[1px_1px_0px_#1a1c1e]">
                 <DoodleTooth className="w-6 h-6 text-[#00666f]" />
               </div>
               <div className="absolute -top-1 -right-1">
@@ -145,17 +116,17 @@ export const App: React.FC = () => {
             </button>
 
             {/* Profile Avatar / Doctor Indicator */}
-            <div
-              onClick={() => setIsChameleonOpen(true)}
+            <a
+              href="#equipo"
               className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border-2 border-dashed border-[#1a1c1e] p-0.5 relative rotate-3 cursor-pointer hover:scale-105 transition-transform"
-              title="Cambiar clínica (Alt + K)"
+              title="Conoce al equipo médico"
             >
               <img
                 alt="Doctor Profile"
                 className="w-full h-full rounded-full object-cover"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXnhXBDULXcwEA0Ar5nv5VXmD6cJ1AJV0g6zMFznKlP8OYu27JNxPL3SwWmbzqecJfsaag5nymm5SCfJ_jx94m95P5gQoD92VM3zf6Hu08H43n1ng5-mvZ5VlOV8H2JPO-4d24AMQMgAJvk45Ub93HDtVzvknsm8xr3C9RKM5m_rBwidT1jgCALA2M38iGDbmD83Iyt9xrr1lzd1BWPnPRpj7XcQtPWM71TOrSuqfUdUHIhWBYwHrXkw"
               />
-            </div>
+            </a>
           </div>
         </div>
       </header>
@@ -293,14 +264,6 @@ export const App: React.FC = () => {
         selectedInsurance={selectedInsurance}
         clinicName={activeClinic.nombre}
         clinicWhatsapp={activeClinic.whatsapp}
-      />
-
-      {/* Chameleon Prospect Selector Modal */}
-      <ChameleonModal
-        isOpen={isChameleonOpen}
-        onClose={() => setIsChameleonOpen(false)}
-        onSelectClinic={(c) => setActiveClinic(c)}
-        currentSlug={activeClinic.slug}
       />
     </div>
   );
