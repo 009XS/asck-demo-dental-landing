@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { ScrollProgress } from './components/ScrollProgress';
-import { ChapterHUD } from './components/ChapterHUD';
 import { HeroSection } from './components/HeroSection';
 import { ComfortScaleSection } from './components/ComfortScaleSection';
 import { HorizontalServicesSection } from './components/HorizontalServicesSection';
@@ -105,12 +103,6 @@ export const App: React.FC = () => {
 
   return (
     <div className="sketchbook-bg min-h-screen text-[#1a1c1e] flex flex-col relative selection:bg-[#74d5e1]/40 selection:text-[#001f23]">
-      {/* Scroll Progress Bar at very top */}
-      <ScrollProgress />
-
-      {/* Floating Chapter HUD / Scroll Spy */}
-      <ChapterHUD />
-
       {/* Fixed Sticky Header */}
       <header className="fixed top-0 w-full z-40 bg-[#fbfaf7]/90 backdrop-blur-md border-b-2 border-dashed border-[#1a1c1e]/20 transition-all">
         <div className="max-w-5xl mx-auto h-16 px-4 sm:px-6 flex items-center justify-between">
