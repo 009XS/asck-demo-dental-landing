@@ -107,20 +107,6 @@ export const App: React.FC = () => {
 
           {/* Header Actions */}
           <div className="flex items-center gap-2 sm:gap-3">
-            {/* Acceso Directo Sistema Clínico */}
-            <a
-              href="https://dental.asck.tech/admin"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="sketch-pill min-h-[40px] px-3 sm:px-4 py-1.5 flex items-center justify-center gap-1.5 bg-[#e0f2fe] hover:bg-[#bae6fd] text-[#0369a1] font-patrick text-xs sm:text-sm font-bold transition-all shadow-[2px_2px_0px_#1a1c1e] active:translate-x-0.5 active:translate-y-0.5"
-              title="Acceso directo al Sistema Clínico Dentalprinter"
-            >
-              <Stethoscope className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Sistema Clínico</span>
-              <span className="sm:hidden">Sistema</span>
-              <span className="text-[10px] font-mono opacity-80">↗</span>
-            </a>
-
             <button
               onClick={() => handleOpenBooking()}
               className="sketch-pill min-h-[40px] px-3.5 sm:px-5 py-1.5 flex items-center justify-center gap-1.5 bg-[#fd7454] text-[#6b1200] font-patrick text-xs sm:text-sm font-bold cursor-pointer transition-all hover:bg-[#ff8a6f] active:translate-x-0.5 active:translate-y-0.5 shadow-[2px_2px_0px_#1a1c1e]"
@@ -231,6 +217,33 @@ export const App: React.FC = () => {
             </span>
           </div>
         </section>
+        {/* Acceso Directo al Sistema Clínico (Hasta el final de la página) */}
+        <section className="px-4 sm:px-6 pt-4 pb-12 max-w-4xl mx-auto w-full">
+          <div className="bg-[#f0f9f9] border-2 border-dashed border-[#00666f]/40 p-6 sm:p-8 rounded-2xl relative shadow-[3px_4px_0px_#1a1c1e] flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="space-y-2 text-center md:text-left">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00666f]/10 text-[#00666f] font-patrick text-xs font-bold">
+                <span className="w-2 h-2 rounded-full bg-[#00666f] animate-pulse"></span>
+                <span>Portal Clínico & Administrativo</span>
+              </div>
+              <h3 className="font-kalam text-xl sm:text-2xl text-[#00666f] font-extrabold leading-tight">
+                Software Dental Dentalprinter Suite
+              </h3>
+              <p className="font-patrick text-sm sm:text-base text-[#3e494a] max-w-lg leading-relaxed">
+                Acceso directo al sistema para odontólogos y equipo administrativo: expedientes de pacientes, odontograma digital, calendario de citas y balance financiero.
+              </p>
+            </div>
+
+            <a
+              href="https://dental.asck.tech/admin"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="sketch-card shrink-0 px-6 py-3.5 bg-[#00666f] hover:bg-[#004f56] text-white font-patrick text-sm sm:text-base font-bold flex items-center gap-2 transition-all shadow-[2px_2px_0px_#1a1c1e] active:translate-x-0.5 active:translate-y-0.5"
+            >
+              <Stethoscope className="w-4 h-4 text-[#74d5e1]" />
+              <span>Ingresar al Sistema Clínico ↗</span>
+            </a>
+          </div>
+        </section>
       </main>
 
       {/* Bottom Sticky Mobile Navigation Bar */}
@@ -250,20 +263,6 @@ export const App: React.FC = () => {
           >
             <Stethoscope className="w-5 h-5" />
             <span className="font-patrick text-xs mt-0.5">Servicios</span>
-          </a>
-
-          {/* Acceso Directo Sistema Clínico */}
-          <a
-            href="https://dental.asck.tech/admin"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col items-center justify-center text-[#0369a1] font-bold py-1 group"
-            title="Portal Clínico Dentalprinter"
-          >
-            <div className="w-6 h-6 rounded-full bg-[#e0f2fe] border border-[#0284c7] flex items-center justify-center shadow-[1px_1px_0px_#1a1c1e] group-hover:scale-105 transition-transform">
-              <span className="text-[10px] font-mono leading-none">⚙</span>
-            </div>
-            <span className="font-patrick text-[11px] mt-0.5 text-[#0369a1] font-bold">Sistema ↗</span>
           </a>
 
           <a
